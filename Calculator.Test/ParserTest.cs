@@ -27,7 +27,7 @@ namespace Calculator.Test
             _outputHelper.WriteLine($"f'(a) = {dans}");
 
             var value = System.Random.Shared.Next(0, 20);
-            VarExpr.Define("a", value);
+            VarExpr.Define("a", new ConstExpr(12));
 
             _outputHelper.WriteLine($"Preview: ");
             _outputHelper.WriteLine(@"\begin{align}");

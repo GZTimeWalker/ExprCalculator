@@ -74,6 +74,15 @@ public class Lexer {
         if (Match('^'))
             return new Token(TokenType.Power, "^");
 
+        if (Match('#'))
+            return new Token(TokenType.Simplify, "#");
+
+        if (Match('d'))
+            return new Token(TokenType.Derivative, "d");
+
+        if (Match(','))
+            return new Token(TokenType.Comma, ",");
+
         if (Match(IsDigit)) {
             var start = Position - 1;
             while (Match(IsDigit));

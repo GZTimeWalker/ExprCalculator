@@ -41,6 +41,11 @@ public interface IExpr : ICloneable {
     /// Get the depth of the node.
     /// </summary>
     int Depth();
+    /// <summary>
+    /// Return the expr with all available variable
+    /// </summary>
+    /// <returns>result</returns>
+    IExpr WithVar();
 }
 
 /// <summary>
@@ -72,6 +77,7 @@ public sealed class ConstExpr : IExpr {
     public int LeftWidth() => Math.Round(Value, 2).ToString().Length / 2;
     public int RightWidth() => Math.Round(Value, 2).ToString().Length / 2;
     public int Depth() => 1;
+    public IExpr WithVar() => this;
 }
 
 /// <summary>
@@ -79,7 +85,7 @@ public sealed class ConstExpr : IExpr {
 /// </summary>
 public sealed class VarExpr : IExpr {
 
-    private static SortedList<string, double> Environment { get; set; }
+    private static SortedList<string, IExpr> Environment { get; set; }
     /// <summary>
     /// Identifier of the variable.
     /// </summary>
@@ -91,10 +97,10 @@ public sealed class VarExpr : IExpr {
     /// <summary>
     /// Get the value of the variable.
     /// </summary>
-    public double Value {
+    public IExpr Value {
         get {
             if (HasVar) {
-                return (double) Environment[Identifier];
+                return Environment[Identifier];
             }
             throw new UndefinedVariableException(Identifier + " is not defined.");
         }
@@ -107,9 +113,9 @@ public sealed class VarExpr : IExpr {
     }
 
     static VarExpr() {
-        Environment = new SortedList<string, double>();
-        Environment.Add("pi", Math.PI);
-        Environment.Add("e", Math.E);
+        Environment = new();
+        Environment.Add("pi", new ConstExpr(Math.PI));
+        Environment.Add("e", new ConstExpr(Math.E));
     }
 
     /// <summary>
@@ -117,7 +123,7 @@ public sealed class VarExpr : IExpr {
     /// </summary>
     /// <param name="varName"> Variable Name </param>
     /// <param name="value"> Variable Value </param>
-    public static void Define(string varName, double value) {
+    public static void Define(string varName, IExpr value) {
         varName = varName.ToLower();
         if (Environment.ContainsKey(varName)) {
             Environment[varName] = value;
@@ -137,9 +143,17 @@ public sealed class VarExpr : IExpr {
         }
     }
 
-    public double Eval() => Value;
+    /// <summary>
+    /// Clear Environment Vars
+    /// </summary>
+    public static void ClearVars()
+    {
+        Environment.Clear();
+    }
+
+    public double Eval() => Value.Eval();
     public IExpr D(string byVar) => new ConstExpr(Identifier == byVar.ToLower() ? 1 : 0);
-    public IExpr Simplify() => HasVar ? new ConstExpr(Value) : new VarExpr(Identifier);
+    public IExpr Simplify() => HasVar ? Value : new VarExpr(Identifier);
     public override string ToString() => Identifier;
     public string ToLatex() => Identifier;
     public object Clone() => new VarExpr(Identifier);
@@ -153,6 +167,8 @@ public sealed class VarExpr : IExpr {
     public int RightWidth() => Identifier.Length / 2;
 
     public int Depth() => 1;
+
+    public IExpr WithVar() => HasVar ? Value.WithVar() : this;
 }
 
 /// <summary>
@@ -234,6 +250,8 @@ public abstract class BinaryExpr : IExpr {
     public int RightWidth() => Right.Width();
 
     public int Depth() => Math.Max(Left.Depth(), Right.Depth()) + 1;
+    public IExpr WithVar() => this;
+
 }
 
 /// <summary>
@@ -256,4 +274,6 @@ public abstract class UnaryExpr : IExpr {
     public abstract int LeftWidth();
     public abstract int RightWidth();
     public int Depth() => Operand.Depth() + 1;
+    public IExpr WithVar() => this;
+
 }

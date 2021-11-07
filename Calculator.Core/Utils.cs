@@ -54,7 +54,6 @@ public static class Utils {
         if(expr is BinaryExpr binaryExpr)
         {
             var leftwidth = binaryExpr.LeftWidth();
-            var rightwidth = binaryExpr.RightWidth();
 
             string op = binaryExpr switch {
                 AddExpr _ => "+",
@@ -122,7 +121,7 @@ public static class Utils {
 
     public static void PrettyPrintExprTree(IExpr expr) {
         Depth = expr.Depth();
-        Width = expr.Width() * 2;
+        Width = Console.WindowWidth;
         for (int depth = 0; depth < Depth * 2; ++depth)
             PrintItems.Add(new());
         SolvePrintItem(expr);

@@ -136,8 +136,20 @@ public class Parser {
                 TokenType.Ceil => new CeilExpr(ret),
                 TokenType.Round => new RoundExpr(ret),
                 TokenType.Sign => new SignExpr(ret),
+                TokenType.Simplify => ret.WithVar().Simplify(),
                 _ => throw new InvalidTokenException(func)
             };
+        }
+
+        if(Peek(TokenType.Derivative))
+        {
+            Match(TokenType.Derivative);
+            Match(TokenType.LParen);
+            string name = Match(TokenType.Name).Value!;
+            Match(TokenType.Comma);
+            IExpr ret = ParseAddExpr().WithVar();
+            Match(TokenType.RParen);
+            return ret.D(name);
         }
 
         if(Peek(TokenType.Name))

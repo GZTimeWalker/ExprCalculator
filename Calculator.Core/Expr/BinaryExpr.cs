@@ -450,7 +450,7 @@ public sealed class PowExpr : BinaryExpr {
         {
             return new MulExpr(new MulExpr(new ConstExpr(Math.Log(lConst.Value)), Right.D(byVar)), new PowExpr(lConst, Right));
         }
-        throw new UnsupportedOperationException("Unsupported operation: complex exponent differentiation.");
+        return new MulExpr((IExpr)Clone(), new MulExpr((IExpr)Right.Clone(), new LnExpr((IExpr)Left.Clone())).D(byVar));
     }
 
     public override IExpr Simplify() {

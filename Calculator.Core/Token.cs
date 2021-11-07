@@ -31,7 +31,12 @@ public enum TokenType
     Ceil = 0x1000000,
     Round = 0x2000000,
     Sign = 0x4000000,
-    Functions = Sin | Cos | Tan | Log | Sqrt | ArcSin | ArcCos | ArcTan | Exp | Ln | Cot | Csc | Sec | Abs | Floor | Ceil | Round | Sign,
+    Simplify = 0x8000000,
+    Functions = Sin | Cos | Tan | Log | Sqrt | ArcSin | 
+                ArcCos | ArcTan | Exp | Ln | Cot | Csc | 
+                Sec | Abs | Floor | Ceil | Round | Sign | Simplify,
+    Derivative = 0x10000000,
+    Comma = 0x20000000,
     EOF = 0x10000000
 }
 
