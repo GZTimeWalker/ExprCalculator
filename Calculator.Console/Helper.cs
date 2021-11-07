@@ -97,7 +97,7 @@ public static class Helper
             Console.WriteLine(line);
 
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("Try these Examples:\n");
+        Console.WriteLine("\n Try these Examples:\n");
 
         string[] examples =
         {
