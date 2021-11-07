@@ -21,5 +21,5 @@ public class UnexpectedEOFException : Exception {
 }
 
 public class UnexpectedTokenException : Exception {
-    public UnexpectedTokenException(TokenType expected, Token actual) : base($"Expected Token {expected} but got Token {actual}.") { }
+    public UnexpectedTokenException(TokenType expected, Token actual) : base($"Expected Token {Enum.GetName(expected)} but got Token {actual}.") { }
 }

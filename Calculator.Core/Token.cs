@@ -42,5 +42,5 @@ public enum TokenType
 
 public record struct Token(TokenType Type, string? Value = null)
 {
-    public override string ToString() => $"{Type} ({Value})";
+    public override string ToString() => $"{Enum.GetName(Type)} ({Value})";
 }

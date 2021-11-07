@@ -21,7 +21,7 @@ public static class Helper
             "                                                                               ",
         };
 
-        string sign = " By GZTime 2021/11/7";
+        string sign = " By GZTime 2021/11/07";
         sign = new String(' ', bound.Length - sign.Length) + sign;
 
         string help = " Type 'help' for help.";
