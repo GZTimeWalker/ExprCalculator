@@ -84,6 +84,19 @@ public static class Helper
         }
 
         Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("\n Supported Functions: \n");
+
+        string[] funcs =
+        {
+            "    sin | cos | tan | log | sqrt | arcsin | arccos | arctan | exp | ln",
+            "    cot | csc | sec | abs | floor | ceil | round | sign"
+        };
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        foreach (string line in funcs)
+            Console.WriteLine(line);
+
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Try these Examples:\n");
 
         string[] examples =
