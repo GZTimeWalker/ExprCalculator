@@ -149,6 +149,8 @@ public sealed class VarExpr : IExpr {
     public static void ClearVars()
     {
         Environment.Clear();
+        Environment.Add("pi", new ConstExpr(Math.PI));
+        Environment.Add("e", new ConstExpr(Math.E));
     }
 
     public double Eval() => Value.Eval();

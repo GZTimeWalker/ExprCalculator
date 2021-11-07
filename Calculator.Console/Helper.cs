@@ -68,6 +68,8 @@ public static class Helper
             "    Show this help.\n",
             "- exit",
             "    Exit the program.\n",
+            "- clear",
+            "    Undefine all variables.\n",
             "- #([Expression])",
             "    Simplify the expression.\n",
             "- d([Variable],[Expression])",
