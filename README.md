@@ -16,4 +16,4 @@ Compile the project with `dotnet publish -c Release -r win-x64`.
 
 Use Windows Terminal for better experience.
 
-![](img/img.png)
+![](https://github.com/GZTimeWalker/ExprCalculator/blob/master/img/img.png)
