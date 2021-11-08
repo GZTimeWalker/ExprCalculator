@@ -6,7 +6,7 @@
 		<TrimmerDefaultAction>Link</TrimmerDefaultAction>
 		<IlcTrimMetadata>true</IlcTrimMetadata>
 		<IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
-		<IlcDisableReflection>false</IlcDisableReflection>
+		<IlcDisableReflection>true</IlcDisableReflection>
 		<InvariantGlobalization>true</InvariantGlobalization>
 	</PropertyGroup>
 	<ItemGroup>

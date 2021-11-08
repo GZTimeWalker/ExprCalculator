@@ -3,7 +3,7 @@
 namespace Calculator.Core;
 
 public static class Utils {
-    private record PrintItem(string Content = " ", int Offset = 0, ConsoleColor Color = ConsoleColor.White);
+    private record struct PrintItem(string Content = " ", int Offset = 0, ConsoleColor Color = ConsoleColor.White);
     private static List<Queue<PrintItem>> PrintItems {get; set;} = new();
     private static int Width {get; set;} = 0;
     private static int Depth {get; set;} = 0;
@@ -29,7 +29,7 @@ public static class Utils {
                 }
                 else
                 {
-                    Console.Write(" ");
+                    Console.Write(' ');
                     ++i;
                 }
             }

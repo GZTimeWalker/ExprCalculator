@@ -32,8 +32,8 @@ public enum TokenType
     Round = 0x2000000,
     Sign = 0x4000000,
     Simplify = 0x8000000,
-    Functions = Sin | Cos | Tan | Log | Sqrt | ArcSin | 
-                ArcCos | ArcTan | Exp | Ln | Cot | Csc | 
+    Functions = Sin | Cos | Tan | Log | Sqrt | ArcSin |
+                ArcCos | ArcTan | Exp | Ln | Cot | Csc |
                 Sec | Abs | Floor | Ceil | Round | Sign | Simplify,
     Derivative = 0x10000000,
     Comma = 0x20000000,
@@ -42,5 +42,39 @@ public enum TokenType
 
 public record struct Token(TokenType Type, string? Value = null)
 {
-    public override string ToString() => $"{Enum.GetName(Type)} ({Value})";
+    public static readonly Dictionary<TokenType, string> TokenName = new()
+    {
+        [TokenType.Number] = nameof(TokenType.Number),
+        [TokenType.Name] = nameof(TokenType.Name),
+        [TokenType.Plus] = nameof(TokenType.Plus),
+        [TokenType.Minus] = nameof(TokenType.Minus),
+        [TokenType.Multiply] = nameof(TokenType.Multiply),
+        [TokenType.Divide] = nameof(TokenType.Divide),
+        [TokenType.Power] = nameof(TokenType.Power),
+        [TokenType.LParen] = nameof(TokenType.LParen),
+        [TokenType.RParen] = nameof(TokenType.RParen),
+        [TokenType.Sin] = nameof(TokenType.Sin),
+        [TokenType.Cos] = nameof(TokenType.Cos),
+        [TokenType.Tan] = nameof(TokenType.Tan),
+        [TokenType.Log] = nameof(TokenType.Log),
+        [TokenType.ArcSin] = nameof(TokenType.ArcSin),
+        [TokenType.ArcCos] = nameof(TokenType.ArcCos),
+        [TokenType.ArcTan] = nameof(TokenType.ArcTan),
+        [TokenType.Sqrt] = nameof(TokenType.Sqrt),
+        [TokenType.Exp] = nameof(TokenType.Exp),
+        [TokenType.Ln] = nameof(TokenType.Ln),
+        [TokenType.Cot] = nameof(TokenType.Cot),
+        [TokenType.Csc] = nameof(TokenType.Csc),
+        [TokenType.Sec] = nameof(TokenType.Sec),
+        [TokenType.Abs] = nameof(TokenType.Abs),
+        [TokenType.Floor] = nameof(TokenType.Floor),
+        [TokenType.Ceil] = nameof(TokenType.Ceil),
+        [TokenType.Round] = nameof(TokenType.Round),
+        [TokenType.Sign] = nameof(TokenType.Sign),
+        [TokenType.Simplify] = nameof(TokenType.Simplify),
+        [TokenType.Derivative] = nameof(TokenType.Derivative),
+        [TokenType.Comma] = nameof(TokenType.Comma),
+        [TokenType.EOF] = nameof(TokenType.EOF)
+    };
+    public override string ToString() => $"{TokenName[Type]} ({Value})";
 }

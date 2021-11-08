@@ -17,7 +17,7 @@ public static class Helper
             "                                                                               ",
         };
 
-        string sign = " By GZTime 2021/11/07";
+        string sign = " By GZTime 2021/11/08";
         sign = new String(' ', bound.Length - sign.Length) + sign;
 
         string help = " Type 'help' for help.";
@@ -43,8 +43,8 @@ public static class Helper
     public static void PrintHelper()
     {
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("\n    C4LCU1AT0R Version 1.0");
-        Console.WriteLine("     By GZTime 2021/11/07");
+        Console.WriteLine("\n    C4LCU1AT0R Version 1.1");
+        Console.WriteLine("     By GZTime 2021/11/08");
         Console.WriteLine("\n Usage: \n");
         string[] content =
         {
