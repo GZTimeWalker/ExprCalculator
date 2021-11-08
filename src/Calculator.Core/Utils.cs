@@ -122,6 +122,7 @@ public static class Utils {
     public static void PrettyPrintExprTree(IExpr expr) {
         Depth = expr.Depth();
         Width = Console.WindowWidth;
+        PrintItems.Clear();
         for (int depth = 0; depth < Depth * 2; ++depth)
             PrintItems.Add(new());
         SolvePrintItem(expr);
