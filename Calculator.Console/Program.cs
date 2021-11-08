@@ -1,7 +1,6 @@
 ﻿using Calculator;
 using Calculator.Core;
 using Calculator.Core.Expr;
-using System;
 
 Helper.PrintHello();
 string? input;

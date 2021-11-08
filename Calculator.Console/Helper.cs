@@ -1,8 +1,4 @@
-﻿using Calculator.Core;
-using Calculator.Core.Expr;
-using System;
-
-namespace Calculator;
+﻿namespace Calculator;
 
 public static class Helper
 {
