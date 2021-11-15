@@ -91,14 +91,14 @@ public class Parser {
             Match();
         }
 
-        IExpr ret = ParsrPrimary();
+        IExpr ret = ParsePrimary();
 
         if (neg)
             ret = new NegExpr(ret);
         return ret;
     }
 
-    private static IExpr ParsrPrimary() {
+    private static IExpr ParsePrimary() {
         if (Peek(TokenType.Number))
             return new ConstExpr(Match().Value);
 
